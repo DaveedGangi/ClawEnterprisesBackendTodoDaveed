@@ -1,0 +1,77 @@
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "Daveed",
+    "password": "Daveed123"
+}
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "Daveed",
+    "password": "Daveed123"
+}
+
+###
+GET http://localhost:3000/allUsers/
+
+###
+
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+    "title": "My First Todo",
+    "description": "This is my first todo",
+    "user_id": 1
+}
+
+###
+
+GET http://localhost:3000/todos/1
+
+
+###
+
+GET http://localhost:3000/getAllTodos
+
+###
+
+PUT http://localhost:3000/todos/1
+Content-Type: application/json
+
+{
+    "title": "My modified Todo",
+    "description": "This is my modified todo"
+}
+
+###
+
+DELETE http://localhost:3000/todos/1
+
+
+###
+
+GET http://localhost:3000/sessions
+
+
+###
+
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+    "user_id":1
+}
+
+###
+
+PUT http://localhost:3000/sessions/1
+
+
+
