@@ -196,27 +196,16 @@ app.get("/sessions",async(request,response)=>{
 
 
 // login session timing 
-app.post("/sessions",async(request,response)=>{
-   const loginTime=new Date().toString();
-   const {user_id}=request.body;
+app.post("/loginSession",async(request,response)=>{
+    const {user_id,login_time,logout_time}=request.body;
+    const createSessionQuery=`INSERT INTO sessions(user_id,login_time,logout_time)
+    VALUES('${user_id}','${login_time}','${logout_time}');`;
+    await db.run(createSessionQuery);
+    response.status(200);
 
-
-   const createSessionQuery=`INSERT INTO sessions(user_id,login_time)
-   VALUES('${user_id}','${loginTime}');`;
-   await db.run(createSessionQuery);
-   
-
-  
-    response.send({errorMessage:"session login created successfully"});
+    response.send({errorMessage:"session created successfully"});
 });
 
 
 
-app.put("/sessions/:id",async(request,response)=>{
-    const {id}=request.params;
-    const logoutTime=new Date().toString();
-    const updateSessionQuery=`UPDATE sessions SET logout_time='${logoutTime}' WHERE id='${id}';`;
-    await db.run(updateSessionQuery);
-    response.send({errorMessage:"session logout updated successfully"});
 
-    });
